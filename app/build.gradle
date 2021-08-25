@@ -1,0 +1,86 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs'
+}
+
+android {
+    compileSdk 30
+
+    defaultConfig {
+        applicationId "com.eddy.healiostest"
+        minSdk 23
+        targetSdk 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "BASE_URL", "\"https://jsonplaceholder.typicode.com/\""
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "\"https://jsonplaceholder.typicode.com/\""
+        }
+    }
+
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation kotlinDependencies.kotlinStdlib
+    implementation kotlinDependencies.kotlinCore
+    implementation kotlinDependencies.kotlinCollection
+
+    implementation androidExtDependencies.androidFragment
+    implementation androidExtDependencies.androidLifecycle
+    implementation androidExtDependencies.androidLifecycleLiveData
+    implementation androidExtDependencies.androidNavigationExtRuntime
+    implementation androidExtDependencies.androidNavigationExtFragment
+    implementation androidExtDependencies.androidNavigationExtUi
+    implementation androidExtDependencies.androidStreams
+    implementation androidExtDependencies.androidRoomExt
+    implementation androidExtDependencies.androidViewModelExt
+    implementation androidExtDependencies.androidActivityExt
+    implementation androidExtDependencies.defaultLifecyle
+
+    implementation roomDependencies.roomRuntime
+    kapt roomDependencies.roomPreprocessorCompiler
+
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.gsonConverter
+    implementation retrofitDependencies.okhttpLoger
+    implementation retrofitDependencies.okhttp
+
+    implementation koinDependencies.koinCore
+    implementation koinDependencies.koinAndroid
+
+    implementation glideDependencies.glideDependencies
+    kapt glideDependencies.glideAnnotationProcessor
+
+    implementation androidDependencies.androidAppCompat
+    implementation androidDependencies.androidMaterial
+    implementation androidDependencies.androidConstraintLayout
+    implementation androidDependencies.androidCardView
+    implementation androidDependencies.androidRecyclerView
+    implementation androidDependencies.navigationCompose
+    implementation androidDependencies.navigationComposeDynemicFeature
+    implementation androidDependencies.legacySupportAndroidX
+    implementation androidDependencies.coroutinesAndroid
+    implementation androidDependencies.coroutinesAndroidCore
+    implementation androidDependencies.swipeRefreshLayout
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
